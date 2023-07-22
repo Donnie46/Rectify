@@ -7,6 +7,7 @@ import {
   createHttpLink,
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import Login from './pages/Login';
 import SignUp from './pages/SignUp';
@@ -60,7 +61,6 @@ function App() {
               <Route path="/Profile/:therapistId" element={<Profile />} />
               <Route path="/therapists" element={<Therapists/>} />
 
-              
               {/* <Route path="/about" element={<Therapists />} />  */}
               <Route path="/about" element={<About />} />
               <Route path="/" element={<Home />} /> 

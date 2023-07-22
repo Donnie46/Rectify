@@ -4,6 +4,7 @@ import { useMutation } from "@apollo/client";
 import { ADD_THERAPIST } from "../utils/mutations";
 import { Box, AppBar, Toolbar, Typography, Menu, Avatar, Button, MenuItem, Stack } from "@mui/material";
 import Auth from "../utils/auth";
+import TherapistCard from "../components/TherapistCard";
 
 const Therapists = ({ setIsLoggedIn }) => {
   const [selectedTherapist, setSelectedTherapist] = useState(null); // Updated state variable
@@ -55,35 +56,18 @@ const Therapists = ({ setIsLoggedIn }) => {
 
   return (
     <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-lg-10">
+      <div>
         <div className="card">
           <h4 className="card-header bg-dark text-light p-2">
             Select a Therapist
           </h4>
           <div className="card-body">
-            <p>Choose from the top five therapists:</p>
+            <p>Choose from the top 6 therapists:</p>
 
-            
-            <ul className="list-group">
               {therapists.map((therapist) => (
-                <li 
-                  key={therapist._id}
-                  className={`list-group-item ${
-                    selectedTherapist && selectedTherapist._id === therapist._id 
-                    ? "active" 
-                    : ""
-                  }`}
-                  onClick={() => handleTherapistSelection(therapist)}
-                  style={{
-                    cursor: "pointer",
-                  }}
-                >
-                  <Link to={`/Profile/${therapist._id}`}>{therapist.name}</Link>
-                </li>
+                <TherapistCard key={therapist._id} name={therapist.name} specialty={therapist.specialty} _id={therapist._id}/>
               ))}
-            </ul>
-
-
+          
             {selectedTherapist && (
               <div className="mt-3">
                 <p>
