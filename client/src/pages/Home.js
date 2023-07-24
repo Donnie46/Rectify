@@ -2,8 +2,8 @@ import React from "react";
 import {Link} from "react-router-dom"
 
 function LandingPageButton() {
-    return <Link to="/about" className="nav-link">
-        <button className="btn btnPrimary" > 
+    return <Link to="/about" className="">
+        <button className="btn btn-primary" > 
             <span style={{"fontSize": "24px"}}>
                Click Here To Learn More
             </span>
