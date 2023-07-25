@@ -1,10 +1,9 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import {Box} from "@mui/material";
+import {Link} from "react-router-dom"
 
-function LandingPageButton() {
-    return <Link to="/about" className="nav-link">
-        <button className="btn btnPrimary" > 
+function LandingPageButton() { 
+    return <Link to="/about" className="">
+        <button className="btn btn-primary" > 
             <span style={{"fontSize": "24px"}}>
                Click Here To Learn More
             </span>
@@ -18,11 +17,8 @@ function LandingFrameMessage() {
         color: "#1876D2",
         fontSize: "15px",
         textShadow: "2px 2px 8px rgba(0, 0, 0, 0.5)",
-        width: window.innerWidth,
     }
-    return <Box 
-        sx={{width: {sm: "400px", md: "600px"}}}
-    >
+    return <div style={style}>
         
         <div style={{"fontSize": "96px"}}>
            Welcome to Rectify!
@@ -34,9 +30,8 @@ function LandingFrameMessage() {
         </div>
         <br />
         <LandingPageButton />
-    </Box>
+    </div>
 }
-
 function LandingFrame() {
     const style = {
         backgroundColor: "#fff2ed",
@@ -51,21 +46,9 @@ function LandingFrame() {
         height: "100%",
         width: "100%",
     }
-    return <Box
-    sx={{width: {sm: "400px", md: "600px", lg: "1000px"}, 
-        background: "#fff2ed",
-        display: "flex",
-        justifyContent: "center",
-        alignItems: "center",
-        backgroundImage: `url(${process.env.PUBLIC_URL + "/images/Handcuffs.jpg"})`,
-        backgroundRepeat: "no-repeat",
-        backgroundSize: "cover",
-        height: "100%",
-}}
-    >
-    
+    return <div style={style}>
         <LandingFrameMessage />
-    </Box>
+    </div>
 }
 function Home() {
     return <div>

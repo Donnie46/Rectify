@@ -9,51 +9,38 @@ import TherapistCard from "../components/TherapistCard";
 const Therapists = ({ setIsLoggedIn }) => {
   const [selectedTherapist, setSelectedTherapist] = useState(null); // Updated state variable
   const [therapists, setTherapists] = useState([]); // Updated state variable
-
   useEffect(() => {
     fetchTherapists();
   }, []);
-
   const fetchTherapists = async () => {
     try {
       const response = await fetch("/api/therapists");
       const data = await response.json();
-
       console.log("Therapists data:", data);
-
       setTherapists(data);
     } catch (error) {
       console.log(error);
     }
   };
-
   const [addTherapist, { error, data }] = useMutation(ADD_THERAPIST);
-
-
-
   const handleTherapistSelection = (therapist) => {
     setSelectedTherapist(therapist);
   };
-
   const handleFormSubmit = async (event) => {
     event.preventDefault();
     
-
     if (selectedTherapist) {
       try {
         // Perform the necessary action upon therapist selection
         console.log("Selected Therapist:", selectedTherapist);
-
         // Example: Login the user with the selected therapist
         Auth.login(selectedTherapist.name);
-
         setIsLoggedIn(true);
       } catch (e) {
         console.error(e);
       }
     }
   };
-
   return (
     <main className="flex-row justify-center mb-4">
       <div className="col-12 col-lg-10">
@@ -64,14 +51,15 @@ const Therapists = ({ setIsLoggedIn }) => {
           <div className="card-body">
             <p>Choose from the top therapists:</p>
 
-            
+
+            <ul className="list-group">
             {/* <ul className="list-group"> */}
               {therapists.map((therapist) => (
-               
+
                 <TherapistCard key={therapist._id} name={therapist.name} specialty={therapist.specialty} _id={therapist._id} />
               ))}
+            </ul>
             {/* </ul> */}
-
 
             {selectedTherapist && (
               <div className="mt-3">
@@ -87,5 +75,4 @@ const Therapists = ({ setIsLoggedIn }) => {
     </main>
   );
 };
-
 export default Therapists;
