@@ -13,12 +13,15 @@ module.exports = {
       token = token.split(" ").pop().trim();
     }
 
+    console.log("Received token: ", token);
+
     if (!token) {
       return req;
     }
 
     try {
       const { data } = jwt.verify(token, secret, { maxAge: expiration });
+      console.log("Decoded token: ", data); 
       req.user = data;
     } catch {
       console.log("Invalid token");
