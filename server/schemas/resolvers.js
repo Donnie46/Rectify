@@ -61,18 +61,19 @@ const resolvers = {
       console.log(user, token);
 
       return { token, user };
+    },
 
       // Resolver for the 'addComment' mutation
       addComment: async (_, { therapistId, commentTitle, commentBody }) => {
-        return Therapist.findIdAndUpdate(
+        return Therapist.findByIdAndUpdate(
           therapistId,
           { $push: { comments: { commentTitle, commentBody } } },
           { new: true, runValidators: true }
         );
-      };
+      },
     },
-  },
-};
+  };
+
 
 // Export the resolvers object
 module.exports = resolvers;
