@@ -1,5 +1,6 @@
+require("dotenv").config();
 const express = require("express");
-const { ApolloServer } = require("apollo-server-express");
+const { ApolloServer, InMemoryLRUCache } = require("apollo-server-express");
 const path = require("path");
 const { authMiddleware } = require("./utils/auth");
 
@@ -14,6 +15,9 @@ const startApolloServer = async () => {
 const server = new ApolloServer({
   typeDefs,
   resolvers,
+  cache: new InMemoryLRUCache({
+    maxSize: 10000,
+  }),
   context: authMiddleware,
 });
 
