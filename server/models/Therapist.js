@@ -2,6 +2,7 @@ const mongoose = require('mongoose'); // Import the mongoose library
 const connectDB = require('../config/connection'); // Import the connection function
 
 
+
 connectDB(); // Call the connection function
 
 // Define a comment schema using mongoose.Schema.
