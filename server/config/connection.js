@@ -3,10 +3,10 @@ const mongoose = require("mongoose"); // Import mongoose lib
 
 const connectDB = async () => {
   try {
-    const conn = await mongoose.connect(process.env.MONGO_URI || "mongodb://localhost/rectify", {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-  });
+    await mongoose.connect(
+      process.env.MONGO_URI || "mongodb://127.0.0.1:27017/rectify", {
+      useNewUrlParser: true,useUnifiedTopology: true,}
+      );
   console.log('MongoDB Connected');
   return conn;
   } catch (err) {
